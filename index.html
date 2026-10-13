@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queboid</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 35%, #1a1f3a 0%, #0a0c1a 60%, #05060f 100%);
+      color: #e8eaf6;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 90px;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* ---------- 3D scene ---------- */
+    .scene {
+      width: 300px;
+      height: 260px;
+      perspective: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cuboid {
+      position: relative;
+      width: 0;
+      height: 0;
+      transform-style: preserve-3d;
+      animation: spin 14s linear infinite;
+    }
+
+    .face {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      letter-spacing: 6px;
+      font-weight: 600;
+      color: rgba(200, 220, 255, 0.9);
+      background: linear-gradient(135deg, rgba(90, 140, 255, 0.28), rgba(160, 90, 255, 0.28));
+      border: 2px solid rgba(140, 190, 255, 0.9);
+      box-shadow: 0 0 25px rgba(100, 150, 255, 0.45), inset 0 0 30px rgba(120, 170, 255, 0.25);
+      backdrop-filter: blur(2px);
+    }
+
+    /* Cuboid size: 220 wide, 130 tall, 130 deep */
+    .front, .back {
+      width: 220px;
+      height: 130px;
+      margin-left: -110px;
+      margin-top: -65px;
+    }
+    .front { transform: translateZ(65px); }
+    .back  { transform: rotateY(180deg) translateZ(65px); }
+
+    .left, .right {
+      width: 130px;
+      height: 130px;
+      margin-left: -65px;
+      margin-top: -65px;
+    }
+    .right { transform: rotateY(90deg) translateZ(110px); }
+    .left  { transform: rotateY(-90deg) translateZ(110px); }
+
+    .top, .bottom {
+      width: 220px;
+      height: 130px;
+      margin-left: -110px;
+      margin-top: -65px;
+    }
+    .top    { transform: rotateX(90deg) translateZ(65px); }
+    .bottom { transform: rotateX(-90deg) translateZ(65px); }
+
+    @keyframes spin {
+      from { transform: rotateX(-22deg) rotateY(0deg); }
+      to   { transform: rotateX(-22deg) rotateY(360deg); }
+    }
+
+    /* soft shadow under the cuboid */
+    .shadow {
+      position: absolute;
+      bottom: -10px;
+      width: 220px;
+      height: 30px;
+      background: radial-gradient(ellipse at center, rgba(100, 150, 255, 0.35), transparent 70%);
+      filter: blur(8px);
+    }
+
+    .stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ---------- Text ---------- */
+    .text h1 {
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #7aa8ff, #c08bff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .text p {
+      margin-top: 14px;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      letter-spacing: 0.2em;
+      color: rgba(200, 210, 240, 0.65);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 480px) {
+      body { gap: 60px; }
+      .scene { transform: scale(0.8); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cuboid { animation-duration: 60s; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="scene">
+      <div class="cuboid">
+        <div class="face front">QUEBOID</div>
+        <div class="face back">QUEBOID</div>
+        <div class="face right"></div>
+        <div class="face left"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+
+  <div class="text">
+    <h1>Website and Products</h1>
+    <p>Coming Soon</p>
+  </div>
+
+</body>
+</html>
