@@ -12,21 +12,22 @@
     }
 
     html, body {
-      height: 100%;
+      min-height: 100%;
     }
 
     body {
       background: radial-gradient(circle at 50% 35%, #1a1f3a 0%, #0a0c1a 60%, #05060f 100%);
+      background-attachment: fixed;
       color: #e8eaf6;
       font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 90px;
-      overflow: hidden;
+      gap: 60px;
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
     /* ---------- 3D scene ---------- */
@@ -115,27 +116,59 @@
     }
 
     /* ---------- Text ---------- */
-    .text h1 {
+    .text {
+      max-width: 560px;
+    }
+
+    .tagline {
       font-size: clamp(1.4rem, 4vw, 2.2rem);
       font-weight: 300;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
+      letter-spacing: 0.12em;
       background: linear-gradient(90deg, #7aa8ff, #c08bff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .text p {
-      margin-top: 14px;
-      font-size: clamp(0.85rem, 2.5vw, 1rem);
+    .story {
+      margin-top: 22px;
+      font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+      line-height: 1.75;
+      color: rgba(200, 210, 240, 0.75);
+    }
+
+    .story strong {
+      color: #e8eaf6;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      margin: 36px auto 22px;
+      background: linear-gradient(90deg, #7aa8ff, #c08bff);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    .text h1 {
+      font-size: clamp(0.95rem, 3vw, 1.2rem);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(200, 210, 240, 0.85);
+    }
+
+    .text p.soon {
+      margin-top: 10px;
+      font-size: clamp(0.75rem, 2.2vw, 0.85rem);
       letter-spacing: 0.2em;
-      color: rgba(200, 210, 240, 0.65);
+      color: rgba(200, 210, 240, 0.5);
       text-transform: uppercase;
     }
 
     @media (max-width: 480px) {
-      body { gap: 60px; }
+      body { gap: 40px; }
       .scene { transform: scale(0.8); }
     }
 
@@ -161,8 +194,18 @@
   </div>
 
   <div class="text">
+    <div class="tagline">Build your Product, brick by brick.</div>
+
+    <p class="story">
+      Queboid comes from the <strong>cuboid</strong>, the shape of a brick.
+      Every house starts with one brick and gets built brick by brick.
+      We want to be that brick for your Product, a solid base you can trust.
+    </p>
+
+    <div class="divider"></div>
+
     <h1>Website and Products</h1>
-    <p>Coming Soon</p>
+    <p class="soon">Coming Soon</p>
   </div>
 
 </body>
